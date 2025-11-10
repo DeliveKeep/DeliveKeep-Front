@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import "tailwindcss";
+
+@theme {
+    --color-*: initial;
+    --color-primary-blue: #06205B;
+    --color-primary-yellow: #FAAE1C;
+    --color-primary-yellow-shadow: #e79a27;
+    --color-white: #F3F3F3;
+    --color-grey: #8F8F8F;
+    --color-grey-light: #ED9D9D9;
+    --color-fade: #000000;
+    --font-roboto: 'Roboto', sans-serif;
+}
+
+.btn-primary {
+    @apply block w-fit bg-primary-yellow text-primary-blue font-bold py-2 px-3 rounded transition-colors
+}
+
+.btn-primary:hover {
+    @apply bg-primary-yellow-shadow;
+}
+
+.btn-primary-long {
+    @apply flex max-w-full w-80 bg-primary-yellow text-primary-blue font-bold py-2 px-3 rounded transition-colors;
+}
+
+.btn-primary-long:hover {
+    @apply bg-primary-yellow-shadow;
+}
+
+
+.input-form {
+    @apply bg-white rounded-md mb-3 mt-1 w-80 text-grey border-1 border-grey-light font-roboto py-2 px-3 text-sm leading-tight;
+}
+
+* {
+    font-family: "Roboto", sans-serif;
+}
