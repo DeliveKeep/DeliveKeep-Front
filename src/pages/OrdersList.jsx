@@ -10,7 +10,7 @@ export default function OrdersList() {
     const orders = useLoaderData();
 
     return (
-        <div className="h-screen bg-primary-blue ">
+        <div className="min-h-screen bg-primary-blue ">
             <div className="flex flex-col ">
                 <Header props={{image: OrderHeaderBgImage}}/>
                 <main className="w-full  container m-auto text-white md:">
@@ -22,12 +22,9 @@ export default function OrdersList() {
                     <LastOrders orders={orders}/>
                 </main>
             </div>
-
-
         </div>
     )
 }
-
 
 export async function loader() {
     const authCheck = checkAuthLoader();
@@ -37,18 +34,17 @@ export async function loader() {
 
     const token = getAuthToken();
 
-    const ordersResponse = fetch('http://localhost:5000/encomendas/cliente', {
+    const ordersResponse = await fetch('http://localhost:5000/encomendas/cliente', {
         headers: {
             'Authorization': 'Bearer ' + token,
         },
     });
 
-    const [ordersRes] = await Promise.all([ordersResponse]);
-
-    if (!ordersRes.ok) {
+    if (!ordersResponse.ok) {
         throw json({ message: 'Não foi possível carregar encomendas.' }, { status: 500 });
     }
-    const orders = await ordersRes.json();
 
-    return { orders };
+    const orders = await ordersResponse.json();
+
+    return orders;
 }

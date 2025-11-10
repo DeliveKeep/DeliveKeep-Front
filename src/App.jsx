@@ -4,7 +4,7 @@ import Home from "./pages/Home.jsx";
 import ErrorPage from "./pages/Error.jsx";
 import UserDashboard,  { loader as userDashboardLoader } from "./pages/UserDashboard.jsx";
 import Profile, { loader as profileLoader } from './pages/Profile';
-import OrdersList from "./pages/OrdersList.jsx";
+import OrdersList, {loader as ordersLoader} from "./pages/OrdersList.jsx";
 import OrderDetails, {loader as orderLoader} from "./pages/OrderDetails.jsx";
 import Authentication, {action as AuthAction} from "./pages/Authentication.jsx";
 import {checkAuthLoader, tokenLoader} from './util/auth';
@@ -29,7 +29,7 @@ const router = createBrowserRouter([
             {
                 path: "/orders",
                 element: <OrdersList/>,
-                loader: checkAuthLoader},
+                loader: ordersLoader},
 
             {
                 path: "/order/:orderCode",
